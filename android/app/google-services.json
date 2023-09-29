@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "296105154475",
+    "project_id": "eval2-c8aa3",
+    "storage_bucket": "eval2-c8aa3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:296105154475:android:fd5634623367f3281464ee",
+        "android_client_info": {
+          "package_name": "com.wendyitca.eval2_sis22"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5J3umevzB2tzjoKM5Q8NemSeR1oq9hsA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
