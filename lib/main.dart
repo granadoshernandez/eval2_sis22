@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Registro de Producto'),
+          title: Text('Registro de Productos'),
         ),
         body: RegistroProducto(),
       ),
@@ -27,6 +27,7 @@ class MyHomePage extends StatefulWidget {
 }
 class _RegistroProductoState extends State<RegistroProducto> {
   TextEditingController nombreController = TextEditingController();
+  TextEditingController precioController = TextEditingController();
   TextEditingController stockController = TextEditingController();
 
   @override
