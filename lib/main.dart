@@ -15,8 +15,17 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+<<<<<<< HEAD
 
 class RegistroProducto extends StatefulWidget {
+=======
+//coment
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+
+  final String title;
+
+>>>>>>> d151eb1930ebf804e80f3f8be9650b7e0b4c6278
   @override
   _RegistroProductoState createState() => _RegistroProductoState();
 }
