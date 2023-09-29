@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -15,17 +22,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-<<<<<<< HEAD
 
 class RegistroProducto extends StatefulWidget {
-=======
-//coment
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
->>>>>>> d151eb1930ebf804e80f3f8be9650b7e0b4c6278
   @override
   _RegistroProductoState createState() => _RegistroProductoState();
 }
@@ -33,6 +31,23 @@ class MyHomePage extends StatefulWidget {
 class _RegistroProductoState extends State<RegistroProducto> {
   TextEditingController nombreController = TextEditingController();
   TextEditingController stockController = TextEditingController();
+
+  Future<void> _guardarDatos() async {
+    String nombre = nombreController.text;
+    int stock = int.tryParse(stockController.text) ?? 0;
+
+    try {
+      await FirebaseFirestore.instance.collection('tb_productos').add({
+        'nombre': nombre,
+        'stock': stock,
+      });
+
+      print(
+          'Datos guardados en Firebase Firestore. Nombre: $nombre, Stock: $stock');
+    } catch (e) {
+      print('Error al guardar los datos: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,21 +66,8 @@ class _RegistroProductoState extends State<RegistroProducto> {
             decoration: InputDecoration(labelText: 'Stock'),
           ),
           SizedBox(height: 20.0),
-          TextField(
-            controller: stockController,
-            keyboardType: TextInputType.number,
-            decoration: InputDecoration(labelText: 'precio'),
-          ),
-          SizedBox(height: 20.0),
           ElevatedButton(
-            onPressed: () {
-              // Aquí puedes agregar la lógica para guardar los datos ingresados.
-              String nombre = nombreController.text;
-              int stock = int.tryParse(stockController.text) ?? 0;
-
-              // Puedes hacer algo con los valores ingresados, como enviarlos a una base de datos.
-              print('Nombre: $nombre, Stock: $stock');
-            },
+            onPressed: _guardarDatos,
             child: Text('Guardar'),
           ),
         ],
