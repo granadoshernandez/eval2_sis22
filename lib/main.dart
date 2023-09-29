@@ -15,21 +15,16 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-<<<<<<< HEAD
-
 class RegistroProducto extends StatefulWidget {
-=======
-//coment
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
+  
   final String title;
 
->>>>>>> d151eb1930ebf804e80f3f8be9650b7e0b4c6278
   @override
   _RegistroProductoState createState() => _RegistroProductoState();
 }
-
+}
 class _RegistroProductoState extends State<RegistroProducto> {
   TextEditingController nombreController = TextEditingController();
   TextEditingController stockController = TextEditingController();
@@ -46,25 +41,26 @@ class _RegistroProductoState extends State<RegistroProducto> {
           ),
           SizedBox(height: 20.0),
           TextField(
-            controller: stockController,
+            controller: precioController,
             keyboardType: TextInputType.number,
-            decoration: InputDecoration(labelText: 'Stock'),
+            decoration: InputDecoration(labelText: 'Precio'),
           ),
           SizedBox(height: 20.0),
           TextField(
             controller: stockController,
             keyboardType: TextInputType.number,
-            decoration: InputDecoration(labelText: 'precio'),
+            decoration: InputDecoration(labelText: 'stock'),
           ),
           SizedBox(height: 20.0),
           ElevatedButton(
             onPressed: () {
               // Aquí puedes agregar la lógica para guardar los datos ingresados.
               String nombre = nombreController.text;
+              String precio = precioController.text;
               int stock = int.tryParse(stockController.text) ?? 0;
 
               // Puedes hacer algo con los valores ingresados, como enviarlos a una base de datos.
-              print('Nombre: $nombre, Stock: $stock');
+              print('Nombre: $nombre, Precio: $precio, Stock: $stock');
             },
             child: Text('Guardar'),
           ),
