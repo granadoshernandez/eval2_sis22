@@ -1,72 +1,66 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-//hola
-//hola
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+void main() => runApp(MyApp());
 
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Registro de Producto'),
+        ),
+        body: RegistroProducto(),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
+class RegistroProducto extends StatefulWidget {
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _RegistroProductoState createState() => _RegistroProductoState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class _RegistroProductoState extends State<RegistroProducto> {
+  TextEditingController nombreController = TextEditingController();
+  TextEditingController stockController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+    return Padding(
+      padding: EdgeInsets.all(16.0),
+      child: Column(
+        children: <Widget>[
+          TextField(
+            controller: nombreController,
+            decoration: InputDecoration(labelText: 'Nombre del Producto'),
+          ),
+          SizedBox(height: 20.0),
+          TextField(
+            controller: stockController,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(labelText: 'Stock'),
+          ),
+          SizedBox(height: 20.0),
+          TextField(
+            controller: stockController,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(labelText: 'precio'),
+          ),
+          SizedBox(height: 20.0),
+          ElevatedButton(
+            onPressed: () {
+              // Aquí puedes agregar la lógica para guardar los datos ingresados.
+              String nombre = nombreController.text;
+              int stock = int.tryParse(stockController.text) ?? 0;
+
+              // Puedes hacer algo con los valores ingresados, como enviarlos a una base de datos.
+              print('Nombre: $nombre, Stock: $stock');
+            },
+            child: Text('Guardar'),
+          ),
+        ],
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
