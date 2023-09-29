@@ -15,21 +15,31 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Registro de Producto'),
+          title: Text('Registro de Productos'),
         ),
         body: RegistroProducto(),
       ),
     );
   }
 }
+<<<<<<< HEAD
 
 class RegistroProducto extends StatefulWidget {
+=======
+class RegistroProducto extends StatefulWidget {
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+  
+  final String title;
+
+>>>>>>> 2b1d7d7b4274800c9034faa61e186e7cd72cbbdd
   @override
   _RegistroProductoState createState() => _RegistroProductoState();
 }
-
+}
 class _RegistroProductoState extends State<RegistroProducto> {
   TextEditingController nombreController = TextEditingController();
+  TextEditingController precioController = TextEditingController();
   TextEditingController stockController = TextEditingController();
 
   Future<void> _guardarDatos() async {
@@ -61,13 +71,32 @@ class _RegistroProductoState extends State<RegistroProducto> {
           ),
           SizedBox(height: 20.0),
           TextField(
+            controller: precioController,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(labelText: 'Precio'),
+          ),
+          SizedBox(height: 20.0),
+<<<<<<< HEAD
+          ElevatedButton(
+            onPressed: _guardarDatos,
+=======
+          TextField(
             controller: stockController,
             keyboardType: TextInputType.number,
-            decoration: InputDecoration(labelText: 'Stock'),
+            decoration: InputDecoration(labelText: 'stock'),
           ),
           SizedBox(height: 20.0),
           ElevatedButton(
-            onPressed: _guardarDatos,
+            onPressed: () {
+              // Aquí puedes agregar la lógica para guardar los datos ingresados.
+              String nombre = nombreController.text;
+              String precio = precioController.text;
+              int stock = int.tryParse(stockController.text) ?? 0;
+
+              // Puedes hacer algo con los valores ingresados, como enviarlos a una base de datos.
+              print('Nombre: $nombre, Precio: $precio, Stock: $stock');
+            },
+>>>>>>> 2b1d7d7b4274800c9034faa61e186e7cd72cbbdd
             child: Text('Guardar'),
           ),
         ],
