@@ -30,20 +30,39 @@ class RegistroProducto extends StatefulWidget {
 
 class _RegistroProductoState extends State<RegistroProducto> {
   TextEditingController nombreController = TextEditingController();
+  TextEditingController precioController = TextEditingController();
   TextEditingController stockController = TextEditingController();
+  List<Map<String, dynamic>> productos = [];
 
   Future<void> _guardarDatos() async {
     String nombre = nombreController.text;
+    String precio = precioController.text;
     int stock = int.tryParse(stockController.text) ?? 0;
 
     try {
       await FirebaseFirestore.instance.collection('tb_productos').add({
         'nombre': nombre,
+        'precio': precio,
         'stock': stock,
       });
 
       print(
-          'Datos guardados en Firebase Firestore. Nombre: $nombre, Stock: $stock');
+          'Datos guardados en Firebase Firestore. Nombre: $nombre, Precio: $precio, Stock: $stock');
+
+      // Actualiza la lista de productos
+      productos.add({
+        'nombre': nombre,
+        'precio': precio,
+        'stock': stock,
+      });
+
+      // Limpia los controladores
+      nombreController.clear();
+      precioController.clear();
+      stockController.clear();
+
+      // Actualiza la interfaz de usuario
+      setState(() {});
     } catch (e) {
       print('Error al guardar los datos: $e');
     }
@@ -61,8 +80,13 @@ class _RegistroProductoState extends State<RegistroProducto> {
           ),
           SizedBox(height: 20.0),
           TextField(
-            controller: stockController,
+            controller: precioController,
             keyboardType: TextInputType.number,
+            decoration: InputDecoration(labelText: 'Precio'),
+          ),
+          SizedBox(height: 20.0),
+          TextField(
+            controller: stockController,
             decoration: InputDecoration(labelText: 'Stock'),
           ),
           SizedBox(height: 20.0),
@@ -70,6 +94,25 @@ class _RegistroProductoState extends State<RegistroProducto> {
             onPressed: _guardarDatos,
             child: Text('Guardar'),
           ),
+          if (productos.isNotEmpty)
+            DataTable(
+              columns: [
+                DataColumn(label: Text('Nombre')),
+                DataColumn(label: Text('Precio')),
+                DataColumn(label: Text('Stock')),
+              ],
+              rows: productos
+                  .map(
+                    (producto) => DataRow(
+                      cells: [
+                        DataCell(Text(producto['nombre'])),
+                        DataCell(Text(producto['precio'].toString())),
+                        DataCell(Text(producto['stock'].toString())),
+                      ],
+                    ),
+                  )
+                  .toList(),
+            ),
         ],
       ),
     );
