@@ -33,6 +33,7 @@ class _RegistroProductoState extends State<RegistroProducto> {
   TextEditingController precioController = TextEditingController();
   TextEditingController stockController = TextEditingController();
   List<Map<String, dynamic>> productos = [];
+  int lastId = 0; // Variable para almacenar el último ID utilizado
 
   Future<void> _guardarDatos() async {
     String nombre = nombreController.text;
@@ -40,17 +41,20 @@ class _RegistroProductoState extends State<RegistroProducto> {
     int stock = int.tryParse(stockController.text) ?? 0;
 
     try {
+      lastId++; // Incrementa el ID antes de agregar un nuevo producto
       await FirebaseFirestore.instance.collection('tb_productos').add({
+        'id': lastId.toString(), // Convierte el ID a String
         'nombre': nombre,
         'precio': precio,
         'stock': stock,
       });
 
       print(
-          'Datos guardados en Firebase Firestore. Nombre: $nombre, Precio: $precio, Stock: $stock');
+          'Datos guardados en Firebase Firestore. ID: $lastId, Nombre: $nombre, Precio: $precio, Stock: $stock');
 
       // Actualiza la lista de productos
       productos.add({
+        'id': lastId.toString(), // Convierte el ID a String
         'nombre': nombre,
         'precio': precio,
         'stock': stock,
@@ -97,6 +101,7 @@ class _RegistroProductoState extends State<RegistroProducto> {
           if (productos.isNotEmpty)
             DataTable(
               columns: [
+                DataColumn(label: Text('ID')),
                 DataColumn(label: Text('Nombre')),
                 DataColumn(label: Text('Precio')),
                 DataColumn(label: Text('Stock')),
@@ -105,6 +110,7 @@ class _RegistroProductoState extends State<RegistroProducto> {
                   .map(
                     (producto) => DataRow(
                       cells: [
+                        DataCell(Text(producto['id'])),
                         DataCell(Text(producto['nombre'])),
                         DataCell(Text(producto['precio'].toString())),
                         DataCell(Text(producto['stock'].toString())),
