@@ -17,7 +17,7 @@ class AcercaDe extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
                       image: DecorationImage(
-                        image: AssetImage('img/rocío.jpeg'),
+                        image: AssetImage('img/wendy.jpg'),
                         fit: BoxFit.cover,
                       ),
                       boxShadow: [
@@ -56,7 +56,7 @@ class AcercaDe extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
                       image: DecorationImage(
-                        image: AssetImage('img/guillén.jpeg'),
+                        image: AssetImage('img/wendy.jpg'),
                         fit: BoxFit.cover,
                       ),
                       boxShadow: [

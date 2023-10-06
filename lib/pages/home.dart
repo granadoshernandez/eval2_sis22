@@ -1,3 +1,4 @@
+import 'package:eval2_sis22/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 import 'AcercaDe.dart';
@@ -20,6 +21,9 @@ class homeState extends State<home> {
         return Registro();
       case 2:
         return Consulta();
+
+      case 3:
+        return LoginPage();
     }
   }
 
@@ -34,7 +38,7 @@ class homeState extends State<home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 241, 237, 21),
+        backgroundColor: Color.fromARGB(255, 128, 219, 155),
         title: Text('EVALUACIÓN 2'),
       ),
       drawer: Drawer(
