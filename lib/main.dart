@@ -1,126 +1,29 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'pages/home.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-
-  runApp(MyApp());
+  Firebase.initializeApp().then((_) {
+    runApp(const MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Registro de Producto'),
-        ),
-        body: RegistroProducto(),
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme:
+            ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 248, 177, 24)),
+        useMaterial3: true,
       ),
-    );
-  }
-}
-
-class RegistroProducto extends StatefulWidget {
-  @override
-  _RegistroProductoState createState() => _RegistroProductoState();
-}
-
-class _RegistroProductoState extends State<RegistroProducto> {
-  TextEditingController nombreController = TextEditingController();
-  TextEditingController precioController = TextEditingController();
-  TextEditingController stockController = TextEditingController();
-  List<Map<String, dynamic>> productos = [];
-  int lastId = 0; // Variable para almacenar el último ID utilizado
-
-  Future<void> _guardarDatos() async {
-    String nombre = nombreController.text;
-    String precio = precioController.text;
-    int stock = int.tryParse(stockController.text) ?? 0;
-
-    try {
-      lastId++; // Incrementa el ID antes de agregar un nuevo producto
-      await FirebaseFirestore.instance.collection('tb_productos').add({
-        'id': lastId.toString(), // Convierte el ID a String
-        'nombre': nombre,
-        'precio': precio,
-        'stock': stock,
-      });
-
-      print(
-          'Datos guardados en Firebase Firestore. ID: $lastId, Nombre: $nombre, Precio: $precio, Stock: $stock');
-
-      // Actualiza la lista de productos
-      productos.add({
-        'id': lastId.toString(), // Convierte el ID a String
-        'nombre': nombre,
-        'precio': precio,
-        'stock': stock,
-      });
-
-      // Limpia los controladores
-      nombreController.clear();
-      precioController.clear();
-      stockController.clear();
-
-      // Actualiza la interfaz de usuario
-      setState(() {});
-    } catch (e) {
-      print('Error al guardar los datos: $e');
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(16.0),
-      child: Column(
-        children: <Widget>[
-          TextField(
-            controller: nombreController,
-            decoration: InputDecoration(labelText: 'Nombre del Producto'),
-          ),
-          SizedBox(height: 20.0),
-          TextField(
-            controller: precioController,
-            keyboardType: TextInputType.number,
-            decoration: InputDecoration(labelText: 'Precio'),
-          ),
-          SizedBox(height: 20.0),
-          TextField(
-            controller: stockController,
-            decoration: InputDecoration(labelText: 'Stock'),
-          ),
-          SizedBox(height: 20.0),
-          ElevatedButton(
-            onPressed: _guardarDatos,
-            child: Text('Guardar'),
-          ),
-          if (productos.isNotEmpty)
-            DataTable(
-              columns: [
-                DataColumn(label: Text('ID')),
-                DataColumn(label: Text('Nombre')),
-                DataColumn(label: Text('Precio')),
-                DataColumn(label: Text('Stock')),
-              ],
-              rows: productos
-                  .map(
-                    (producto) => DataRow(
-                      cells: [
-                        DataCell(Text(producto['id'])),
-                        DataCell(Text(producto['nombre'])),
-                        DataCell(Text(producto['precio'].toString())),
-                        DataCell(Text(producto['stock'].toString())),
-                      ],
-                    ),
-                  )
-                  .toList(),
-            ),
-        ],
-      ),
+      home: home(),
     );
   }
 }
