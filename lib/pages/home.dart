@@ -23,7 +23,7 @@ class homeState extends State<home> {
         return Consulta();
 
       case 3:
-        return LoginPage();
+        return const LoginPage();
     }
   }
 
