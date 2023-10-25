@@ -78,14 +78,15 @@ class _LoginPageState extends State<LoginPage> {
                   width: double.infinity,
                   height: 45,
                   decoration: BoxDecoration(
-                    color: Colors.blue,
+                    color: Color.fromARGB(255, 243, 149, 34),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: const Center(
                       child: Text(
                     "Login",
                     style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+                        color: Color.fromARGB(255, 251, 249, 249),
+                        fontWeight: FontWeight.bold),
                   )),
                 ),
               ),
@@ -120,7 +121,8 @@ class _LoginPageState extends State<LoginPage> {
               Text(
                 '$mensaje',
                 style: const TextStyle(
-                    color: Colors.blue, fontWeight: FontWeight.bold),
+                    color: Color.fromARGB(255, 3, 194, 252),
+                    fontWeight: FontWeight.bold),
               )
             ],
           ),

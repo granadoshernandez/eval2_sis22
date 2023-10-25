@@ -1,5 +1,7 @@
 import 'package:eval2_sis22/pages/login_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:quickalert/quickalert.dart';
 
 import 'AcercaDe.dart';
 import 'Consulta.dart';
@@ -32,6 +34,27 @@ class homeState extends State<home> {
     setState(() {
       ItemDrawer = pos;
     });
+  }
+
+  void _alertClose() {
+    QuickAlert.show(
+      context: context,
+      type: QuickAlertType.confirm,
+      text: 'desea salir de esta  cuenta',
+      confirmBtnText: 'aceptar',
+      cancelBtnText: 'cancelar',
+      barrierDismissible: false,
+      cancelBtnTextStyle:
+          TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+      confirmBtnColor: Colors.green,
+      onConfirmBtnTap: () {
+        FirebaseAuth.instance.signOut();
+        Navigator.pushNamed(context, "/login");
+      },
+      onCancelBtnTap: () {
+        Navigator.of(context).pop();
+      },
+    );
   }
 
   @override
