@@ -23,6 +23,7 @@ class AcercaDe extends StatelessWidget {
             colors: <Color>[
               Color.fromARGB(212, 231, 123, 226),
               Color.fromARGB(255, 160, 226, 243),
+              Color.fromARGB(255, 241, 25, 133),
             ],
           ),
         ),
