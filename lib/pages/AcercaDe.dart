@@ -41,6 +41,7 @@ class AcercaDe extends StatelessWidget {
               Wrap(
                 alignment: WrapAlignment.center,
                 spacing: 10.0,
+                direction: Axis.vertical,
                 children: <Widget>[
                   Wen('Wendy'),
                   Wen('Sthefany'),
