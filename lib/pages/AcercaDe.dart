@@ -83,12 +83,14 @@ class AcercaDe extends StatelessWidget {
                         fontStyle: FontStyle.italic,
                       ),
                     ),
+                    TextSpan(text: 'Wendy'),
                     TextSpan(
-                        text: 'Wendy Granados',
+                        text: 'Lorena Granados',
                         style: TextStyle(
                           color: Color.fromARGB(255, 8, 218, 8),
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.bold,
+                          fontSize: 20,
                         )),
                   ],
                 ),
