@@ -18,12 +18,12 @@ class AcercaDe extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
             colors: <Color>[
               Color.fromARGB(212, 231, 123, 226),
               Color.fromARGB(255, 160, 226, 243),
-              Color.fromARGB(255, 241, 25, 133),
+              Color.fromARGB(255, 68, 65, 58),
             ],
           ),
         ),
@@ -62,34 +62,34 @@ class AcercaDe extends StatelessWidget {
                 text: TextSpan(
                   style: TextStyle(
                     fontSize: 32,
-                    color: Color.fromARGB(255, 221, 236, 7),
+                    color: Color.fromARGB(255, 94, 1, 243),
                   ),
                   children: [
                     TextSpan(
-                      text: 'Texto en negrita ',
+                      text: 'Hola ',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     TextSpan(
-                      text: 'Texto Rojo y Grande  ',
+                      text: 'Mundo  ',
                       style: TextStyle(
                         color: Colors.red,
                         fontSize: 24,
                       ),
                     ),
                     TextSpan(
-                      text: 'Texto Verde Cursiva ',
+                      text: 'esto es  ',
                       style: TextStyle(
-                        color: Color.fromARGB(166, 164, 248, 6),
+                        color: Color.fromARGB(166, 36, 36, 35),
                         fontStyle: FontStyle.italic,
                       ),
                     ),
-                    TextSpan(text: 'Wendy '),
+                    TextSpan(text: 'Rich'),
                     TextSpan(
-                        text: 'Lorena Granados',
+                        text: 'Text',
                         style: TextStyle(
-                          color: Color.fromARGB(255, 8, 218, 8),
+                          color: Color.fromARGB(255, 238, 108, 2),
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
