@@ -41,7 +41,7 @@ class AcercaDe extends StatelessWidget {
               Wrap(
                 alignment: WrapAlignment.center,
                 spacing: 10.0,
-                direction: Axis.vertical,
+                direction: Axis.horizontal,
                 children: <Widget>[
                   Wen('Wendy'),
                   Wen('Sthefany'),
@@ -55,7 +55,9 @@ class AcercaDe extends StatelessWidget {
               SizedBox(height: 40),
               Text('RichText',
                   style: TextStyle(
-                      color: Color.fromARGB(255, 12, 12, 12), fontSize: 20)),
+                    color: Color.fromARGB(255, 12, 12, 12),
+                    fontSize: 20,
+                  )),
               RichText(
                 text: TextSpan(
                   style: TextStyle(
@@ -64,26 +66,26 @@ class AcercaDe extends StatelessWidget {
                   ),
                   children: [
                     TextSpan(
-                      text: 'Texto en negrita: ',
+                      text: 'Texto en negrita ',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     TextSpan(
-                      text: '\nTexto Rojo y Grande: ',
+                      text: 'Texto Rojo y Grande  ',
                       style: TextStyle(
                         color: Colors.red,
                         fontSize: 24,
                       ),
                     ),
                     TextSpan(
-                      text: '\nTexto Verde Cursiva: ',
+                      text: 'Texto Verde Cursiva ',
                       style: TextStyle(
-                        color: Colors.green,
+                        color: Color.fromARGB(166, 164, 248, 6),
                         fontStyle: FontStyle.italic,
                       ),
                     ),
-                    TextSpan(text: 'Wendy'),
+                    TextSpan(text: 'Wendy '),
                     TextSpan(
                         text: 'Lorena Granados',
                         style: TextStyle(
@@ -92,6 +94,7 @@ class AcercaDe extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
                         )),
+                    // TextSpan(text: ' \nHola')
                   ],
                 ),
               ),
