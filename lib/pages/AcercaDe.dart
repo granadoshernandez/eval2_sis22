@@ -86,8 +86,9 @@ class AcercaDe extends StatelessWidget {
                     TextSpan(
                         text: 'Wendy Granados',
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Color.fromARGB(255, 8, 218, 8),
                           fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold,
                         )),
                   ],
                 ),
