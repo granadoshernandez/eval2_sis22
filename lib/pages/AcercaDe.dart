@@ -49,7 +49,7 @@ class AcercaDe extends StatelessWidget {
                   Wen('Wendy'),
                   Wen('Wendy'),
                   Wen('Wendy'),
-                  Wen('Wendy'),
+                  Wen('Lore'),
                 ],
               ),
               SizedBox(height: 40),
@@ -116,10 +116,10 @@ class Wen extends StatelessWidget {
     return Chip(
       avatar: CircleAvatar(
         child: Text(this.texto),
-        backgroundColor: Colors.white,
+        backgroundColor: Color.fromARGB(255, 215, 245, 132),
       ),
       label: Text(this.texto, style: TextStyle(color: Colors.white)),
-      backgroundColor: Colors.blue,
+      backgroundColor: Color.fromARGB(255, 180, 84, 245),
     );
   }
 }
