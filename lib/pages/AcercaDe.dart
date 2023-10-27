@@ -62,7 +62,7 @@ class AcercaDe extends StatelessWidget {
                 text: TextSpan(
                   style: TextStyle(
                     fontSize: 32,
-                    color: Color.fromARGB(255, 94, 1, 243),
+                    color: Color.fromARGB(255, 113, 84, 241),
                   ),
                   children: [
                     TextSpan(
@@ -85,7 +85,11 @@ class AcercaDe extends StatelessWidget {
                         fontStyle: FontStyle.italic,
                       ),
                     ),
-                    TextSpan(text: 'Rich'),
+                    TextSpan(
+                        text: 'Rich',
+                        style: TextStyle(
+                          backgroundColor: Color.fromARGB(255, 68, 182, 248),
+                        )),
                     TextSpan(
                         text: 'Text',
                         style: TextStyle(
@@ -94,7 +98,7 @@ class AcercaDe extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
                         )),
-                    // TextSpan(text: ' \nHola')
+                    //TextSpan(text: ' \nHola')
                   ],
                 ),
               ),
