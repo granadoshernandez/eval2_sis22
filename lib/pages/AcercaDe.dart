@@ -31,11 +31,14 @@ class AcercaDe extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
-                'WRAP',
-                style: TextStyle(
-                  color: Color.fromARGB(255, 12, 12, 12),
-                  fontSize: 20,
+              RichText(
+                text: TextSpan(
+                  text: 'Wrap',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 8, 8, 8),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40,
+                  ),
                 ),
               ),
               Wrap(
@@ -56,7 +59,8 @@ class AcercaDe extends StatelessWidget {
               Text('RichText',
                   style: TextStyle(
                     color: Color.fromARGB(255, 12, 12, 12),
-                    fontSize: 20,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
                   )),
               RichText(
                 text: TextSpan(
