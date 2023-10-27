@@ -39,6 +39,8 @@ class AcercaDe extends StatelessWidget {
                 ),
               ),
               Wrap(
+                alignment: WrapAlignment.center,
+                spacing: 10.0,
                 children: <Widget>[
                   Wen('Wendy'),
                   Wen('Sthefany'),
