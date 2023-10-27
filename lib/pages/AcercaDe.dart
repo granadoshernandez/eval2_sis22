@@ -56,7 +56,7 @@ class AcercaDe extends StatelessWidget {
                 text: TextSpan(
                   style: TextStyle(
                     fontSize: 32,
-                    color: Colors.blue,
+                    color: Color.fromARGB(255, 221, 236, 7),
                   ),
                   children: [
                     TextSpan(
@@ -65,7 +65,6 @@ class AcercaDe extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    TextSpan(text: 'texto normal'),
                     TextSpan(
                       text: '\nTexto Rojo y Grande: ',
                       style: TextStyle(
@@ -73,7 +72,6 @@ class AcercaDe extends StatelessWidget {
                         fontSize: 24,
                       ),
                     ),
-                    TextSpan(text: 'Este es un texto rojo y grande.'),
                     TextSpan(
                       text: '\nTexto Verde Cursiva: ',
                       style: TextStyle(
@@ -81,10 +79,12 @@ class AcercaDe extends StatelessWidget {
                         fontStyle: FontStyle.italic,
                       ),
                     ),
-                    TextSpan(text: 'Este es un texto verde en cursiva.'),
                     TextSpan(
                         text: 'Wendy Granados',
-                        style: TextStyle(color: Colors.black)),
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontStyle: FontStyle.italic,
+                        )),
                   ],
                 ),
               ),
